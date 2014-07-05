@@ -1,0 +1,44 @@
+<div class="modal fade bs-modal-sm" id="#createAccountModal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Create New Account</h4>
+      </div>
+      <div class="modal-body">
+      
+      <form id="createAccountForm" class="form-horizontal" method="post" action="/home/newaccountpost/" >
+    	{% csrf_token %}
+        <fieldset>
+            <div class="control-group">
+              <label class="control-label" for="accountName">Account Name:</label>
+              <div class="controls">
+                 <input required="" id="accountName" name="accountName" type="text" class="form-control" placeholder="" class="input-small" required="">
+              </div>
+            </div>
+			<div class="control-group">
+              <label class="control-label" for="accountTag">Account Tag:</label>
+              <div class="controls">
+                 <input required="" id="accountTag" name="accountTag" type="text" class="form-control" placeholder="" class="input-small" required="">
+              </div>
+            </div>
+            <div class="control-group">
+      			<label for="accountDescription" control-label">Account Description</label>
+      			<div class="controls">
+        			<textarea class="form-control" rows="3" name="accountDescription" form="createAccountForm"></textarea>
+        			<span class="help-block">Write a short description of what the account is. This can be useful with multiple accounts.</span>
+      			</div>
+    		</div>
+            
+            <div class="control-group">
+              <label class="control-label" for="createButton"></label>
+              <div class="controls">
+                <button id="createButton" name="create" class="btn btn-success">Create</button>
+              </div>
+            </div>
+      	</fieldset>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

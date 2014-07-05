@@ -1,0 +1,57 @@
+<!-- Modal -->
+<div class="modal fade bs-modal-sm" id="createTransactionModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Transaction</h4>
+      </div>
+      <div class="modal-body">
+      
+      <form id="createBalanceModal" class="form-horizontal" method="post" action="/home/createTransaction/" >
+    	{% csrf_token %}
+        <fieldset>
+            <div class="control-group">
+        		<div class="radio">
+          			<label>
+            			<input type="radio" name="sign" id="sign" value="1">
+            			Income
+          			</label>
+        		</div>
+            	<div class="radio">
+          			<label>
+            			<input type="radio" name="sign" id="sign" value="-1" checked="">
+            			Expense
+          			</label>
+          		</div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="amount">Transaction Amount</label>
+              <div class="controls">
+                 <input name="amount" required="" id="amount" type="text" class="form-control" placeholder="Amount" class="input-small">
+              </div>            
+            </div>
+            <div class="control-group">
+            	<label class="control-label" for="comment">Comment</label>
+            	<div class="controls">
+            		<textarea class="form-control" rows="2" name="comment" required="" placeholder="Put a description that you will remember later"></textarea>
+        		</div>            
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="tag">Category (optional)</label>
+              <div class="controls">
+                 <input name="tag" id="tag" type="text" class="form-control" placeholder="Like 'Food', 'School', etc" class="input-small">
+              </div>            
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="account"></label>
+              <div class="controls">
+                <button id="createButton" name="account" value="{{ selected_account_tag }}" class="btn btn-success">Add</button>
+              </div>
+            </div>
+      	</fieldset>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+{% extends "_layouts/base.html" %}
+
+{% block css %}
+{{block.super}}
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+</style>
+{% endblock css %}
+
+
+{% block body %}
+{{block.super}}
+<!--
+	{% if not user.is_authenticated %}
+  		<script type="text/javascript">
+    		$(window).load(function(){
+        		$('#myModal').modal('show');
+    		});
+		</script>
+  	{% endif %}
+  -->
+{% endblock body %}
+
+{% block page_title %}Finance Tracker{% endblock %}
+{% block page_class %}home-page{% endblock %}
+{% block content %}
+
+{% include "_layouts/loginModal.html" %}
+
+
+<!-- This code is taken from http://getbootstrap.com/examples/jumbotron/ -->
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Finance Tracker</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+        	<ul class="nav navbar-nav navbar-right">
+            	<li><a "href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a></li>
+            </ul>
+        	
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Finance Tracker!</h1>
+        <p>A simple, intuitive tool for tracking your spending habits, with support for iOS, Android, and SMS-enabled devices.</p>
+        <p><a class="btn btn-primary btn-lg" role="button" href="newuser">Learn more »</a></p>
+      </div>
+    </div>
+    
+    
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

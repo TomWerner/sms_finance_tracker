@@ -1,0 +1,56 @@
+{% extends "_layouts/base.html" %}
+
+{% block css %}
+{{block.super}}
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+</style>
+{% endblock css %}
+
+
+{% block body %}
+{{block.super}}
+
+{% endblock body %}
+
+{% block page_title %}Finance Tracker{% endblock %}
+{% block page_class %}home-page{% endblock %}
+{% block content %}
+
+
+
+<!-- This code is taken from http://getbootstrap.com/examples/jumbotron/ -->
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/home">Finance Tracker</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+        	<ul class="nav navbar-nav navbar-right">
+            	<li><a href="/logout">Logout</a></li>
+            </ul>
+        	
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+	
+	<!--No accounts yet-->
+	{% if account_count == 0 %}
+    {% include "base/gettingStarted.html" %}
+    {% else %} <!--We have accounts-->
+    {% include "base/accountOverview.html" %}    
+    {% endif %}
+
+
+{% endblock %}

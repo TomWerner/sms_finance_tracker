@@ -1,0 +1,84 @@
+{% include "base/modals/createMoneyAccountModal.html" %}
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+		
+		<h3>Accounts</h3>
+		<div class="list-group">
+  
+		{% for acc in account_list %}
+			<!--a href="#" class="list-group-item active"-->
+    		
+  			<a href="#" class="list-group-item">{{ acc.account_name }}
+  			</a>
+		{% endfor %}
+		
+			<a href=#createAccountModal class="list-group-item" data-toggle="modal" data-target="#createAccountModal">Add Account</a>
+		</div>
+		
+		<h3>Options</h3>
+		<div class="list-group">
+			<a href=# class="list-group-item">Set Up SMS updates</a>
+			<a href=# class="list-group-item">Edit Accounts</a>
+		</div>
+		
+		
+      </div>
+      <div class="col-md-10">
+        <!--Body content-->
+        
+        <h2>{{ selected_account }}</h2>
+        
+		<table class="table table-striped table-hover ">
+  			<thead>
+   			 <tr>
+      			<th>Date</th>
+   	   			<th>Balance</th>
+      			<th>In</th>
+     			<th>Out</th>
+     			<th>Comment</th>
+     			<th>Category</th>
+    		 </tr>
+  			</thead>
+  			<tbody>
+  				{% for record in records %}
+  					<tr>
+  						<td>{{ record.date|date:"F d, Y" }}</td>
+  						<td>{{ record.balance }}</td>
+  						
+  						{% if record.amount > 0 %}
+  							<td>{{ record.amount }}</td>
+  							<td></td>
+  						{% else %}
+  							<td></td>
+  							<td>{{ record.amount }}</td>
+  						{% endif %}
+  						<td>{{ record.comment }}</td>
+  						<td>{{ record.tag }}</td>
+  					</tr>
+  				{% endfor %}
+  				
+  				{% if no_records %}
+  					<tr>
+  						<td colspan="6"><a style="display: block;"data-toggle="modal" data-target="#createBalanceModal">Click to Add a Balance</a></td>
+  					</tr>	
+  				{% else %}
+  					<tr>
+  						<td colspan="6"><a style="display: block;"data-toggle="modal" data-target="#createTransactionModal">Click to Add a Transaction</a></td>
+  					</tr>
+  				{% endif %}
+  				
+  				
+  			</tbody>
+			</table> 
+      </div>
+    </div>
+  </div>
+  
+  {% if no_records %}
+  	{% include "base/modals/createBalanceModal.html" %}
+  {% else %}
+  	{% include "base/modals/createTransactionModal.html" %}
+  {% endif %}
